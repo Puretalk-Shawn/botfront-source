@@ -130,7 +130,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose
 ```
 3.  Then clone this repo and install the dependencies:
 ```bash
-git clone https://github.com/botfront/botfront
+git clone https://github.com/Puretalk-Shawn/botfront-source.git
 cd botfront/botfront
 meteor npm install
 ```
