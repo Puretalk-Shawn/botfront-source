@@ -92,20 +92,7 @@ It provides super intuitive interfaces and collaborative features to domain expe
 </tr>
 </table>
 <br/>
-<h2 name="quick-start" align="center">Quick Start</h2>
 
-Botfront only requires a recent version of Docker. You can install the CLI with the following:
-
-```bash
-npm install -g botfront
-```
-
-Then just run `botfront`to get started.
-
-<!-- broken image. commented out as I'm not sure it should be deleted -->
-<!-- <img src="/botfront/docs/terminalizer/botfront-setup.gif?raw=true" width="100%"> -->
-
-<br/>
 <h2 name="documentation" align="center">Documentation</h2>
 
 The [official documentation](https://botfront.io/docs/getting-started/setup) of Botfront is hosted on [botfront.io](https://botfront.io/docs/getting-started/setup). It is automatically built and updated on every new release. Once you've installed the cli you can also use `botfront docs` to open it.
@@ -117,7 +104,31 @@ The [official documentation](https://botfront.io/docs/getting-started/setup) of 
 ### Installation
 
 1. Botfront is a Meteor app, so the first step is to [install Meteor](https://www.meteor.com/install)
-2. Then clone this repo and install the dependencies:
+```bash
+curl https://install.meteor.com/ | sh
+```
+2. Install Docker
+
+```bash
+sudo apt-get update
+
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+    
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose
+```
+3.  Then clone this repo and install the dependencies:
 ```bash
 git clone https://github.com/botfront/botfront
 cd botfront/botfront
@@ -128,7 +139,7 @@ meteor npm install
 # if you installed Botfront from npm uninstall it.
 npm uninstall -g botfront
 # Install the cli from the source code
-cd cli && npm link
+cd ../cli && npm link
 ```
 Botfront needs to be connected to other services, especially Rasa. To do this, you need to create a regular project, and start Botfront with a dedicated configuration:
 
